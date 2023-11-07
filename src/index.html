@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/src/styles/styles.css" rel="stylesheet">
+    <title>Saudi Fit</title>
+    <title>حاسبة السعرات الحرارية</title>
+    <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
+</head>
+<body>
+    <div class="calories-banner flex bg-slate-100 w-full justify-center gap-3 p-20 mb-3">
+        <div class="wrapper2">
+            <div class="flex-col md:p-8 sm:p-3">
+                <h2 class="lg:text-4xl sm:text-2xl font-semibold text-center text-black mb-3">حاسبة السعرات الحرارية</h2>
+            </div>
+        </div>
+    </div>
+    <div class="flex w-full justify-center gap-10">
+        <div class="wrapper2">
+            <div class="flex-col py-8">
+                <h2 class="text-4xl font-semibold text-start text-black mb-10 leading-relaxed">ما هي حاسبة السعرات الحرارية</h2>
+                <p class="text-sm font-normal text-start text-black leading-loose">
+                    حاسبة السعرات الحراریة من سعودي فت تمكنك من حساب السعرات المناسبة لھدفك بأدق وأحدث معادلة لحساب إجمالي الطاقة التي تحرقھا یومیًا ) (TDEEوھوإجمالي عدد السعرات الحراریة التي تحرقھا كل یوم بناءً على مستوى نشاطك البدني. وكذلك حساب احتیاجك الیومي من المغذیات مثل البروتین والدھونوالكربوھیدرات وضبط كمیة السعرات الحراریة التي تتناولھا بناءً على أھدافك الصحیة، سواء كان ذلك الحفاظ على الوزن , نزول الوزن أو زیادة الوزن. كل ماعلیك فعلھ ھو تزوید حاسبة السعرات بالتفاصیل الشخصیة الخاصة بك مثل الوزن والطول والعمر ومتوسط عدد الخطوات الیومیة واختیار ھدفك ودع حاسبةسعودي فت تقوم بالباقي
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="stack-item w-full inputs">
+            <div class="gender">
+                <label for="gender" >الجنس</label>
+                <ul class="flex gap-2">
+                    <li>
+                        <input type="radio" id="male" value="male" name="gender" class="hidden peer" checked>
+                        <label for="male" class="radio-label">                           
+                            <div class="w-10 text-center">ذكر</div>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="radio" id="female" value="female" name="gender" class="hidden peer">
+                        <label for="female" class="radio-label">                           
+                            <div class="w-10 text-center">أنثى</div>
+                        </label>
+                    </li>
+                </ul>
+            </div>            
+            <div class="input-fields">
+                <label for="age">العمر</label>
+                <input type="number" id="age" placeholder="18" required>
+                
+                <label for="height">الطول (سم)</label>
+                <input type="number" id="height" placeholder="xxx سم" required>
+                
+                <label for="weight">الوزن (كغ)</label>
+                <input type="number" id="weight" placeholder="xx كغ" required>
+            </div>
+            
+            <button onclick="calculateCalories()">احسب السعرات الحرارية</button>
+        </div>
+        <div class="stack-item  w-full level-goal">
+            <div class="activity">
+                <label for="activity">مستوى النشاط البدني</label>
+                <div class="dropdown-container">
+                    <select id="activity" required>
+                        <option class="option-ph" value="" disabled selected>اختر مستوى النشاط</option>
+                        <option class="option" value="1.2">أقل من 5000 خطوة / اليوم</option>
+                        <option class="option" value="1.375">5000 - 6500 خطوة / اليوم</option>
+                        <option class="option" value="1.55">6500 - 8000 خطوة / اليوم</option>
+                        <option class="option" value="1.725">8000 - 10000 خطوة / اليوم</option>
+                        <option class="option" value="1.9">10000 - 13000 خطوة / اليوم</option>
+                        <option class="option" value="2.0">13000 - 15000 خطوة / اليوم</option>
+                        <option class="option" value="2.2">15000 خطوة أو أكثر / اليوم</option>
+                    </select>
+                </div>
+            </div>
+            <div class="goal">
+                <label for="goal">الهدف</label>
+                <div class="dropdown-container">
+                    <select id="goal">
+                        <option class="option-ph" value="" disabled selected>اختر الهدف</option>
+                        <option class="option" value="cutting">خسارة الوزن</option>
+                        <option class="option" value="bulking">زيادة الوزن</option>
+                        <option class="option" value="maintain">المحافظة على الوزن</option>
+                    </select>
+                </div>
+            </div>
+            <div id="cutting-goal" class="">
+                <label>التنشيف</label>
+                <ul class="flex-row gap-2">
+                    <li>
+                        <input type="radio" id="cutting-0.25" value="0.25" name="cutting-goal-radio" class="hidden peer" checked>
+                        <label for="cutting-0.25" class="radio-label-ver">                           
+                            <div class="w-fit text-center">نزول أسبوعي بمعدل 0.25 جرام</div>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="radio" id="cutting-0.5" value="0.5" name="cutting-goal-radio" class="hidden peer">
+                        <label for="cutting-0.5" class="radio-label-ver">                           
+                            <div class="w-fit text-center">نزول أسبوعي بمعدل 0.5 جرام</div>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="radio" id="cutting-0.75" value="0.75" name="cutting-goal-radio" class="hidden peer">
+                        <label for="cutting-0.75" class="radio-label-ver">                           
+                            <div class="w-fit text-center">نزول أسبوعي بمعدل 0.75 جرام</div>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="radio" id="cutting-1" value="1" name="cutting-goal-radio" class="hidden peer">
+                        <label for="cutting-1" class="radio-label-ver">                           
+                            <div class="w-fit text-center">نزول أسبوعي بمعدل 1 كيلوجرام</div>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <div id="bulking-goal" class="">
+                <label>التضخيم</label>
+                <ul class="flex-row gap-2">
+                    <li>
+                        <input type="radio" id="bulking-0.25" value="0.25" name="bulking-goal-radio" class="hidden peer" checked>
+                        <label for="bulking-0.25" class="radio-label-ver">                           
+                            <div class="w-fit text-center">زيادة أسبوعية بمعدل 0.25 جرام</div>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="radio" id="bulking-0.5" value="0.5" name="bulking-goal-radio" class="hidden peer">
+                        <label for="bulking-0.5" class="radio-label-ver">                           
+                            <div class="w-fit text-center">زيادة أسبوعية بمعدل 0.5 جرام</div>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="radio" id="bulking-0.75" value="0.75" name="bulking-goal-radio" class="hidden peer">
+                        <label for="bulking-0.75" class="radio-label-ver">                           
+                            <div class="w-fit text-center">زيادة أسبوعية بمعدل 0.75 جرام</div>
+                        </label>
+                    </li>
+                </ul>
+            </div>            
+            <div id="maintain-goal" class="p-2">
+                <label>بناء العضلات و خسارة الدهون بنفس الوقت</label>
+            </div>  
+        </div>
+    </div>
+    <div id= "results-container" class="result-wrapper w-full mb-2">
+        <div class="result-box stack-item w-full">
+            <div class="flex align-middle">
+                <label class="heading-result">السعرات الحرارية</label>
+                <label class="text-white bg-sf_primary rounded-xl text-xs p-2 mr-2 font-normal goal-tag h-8">للهدف</label>
+            </div>
+            <div id="result" class="result-label"></div>
+        </div>
+        <div class="result-box stack-item w-full">
+            <div class="flex align-middle">
+                <label class="heading-result">سعرات المحافظة على الوزن الحالي</label>
+            </div>
+            <div id="maintain-result" class="result-label"></div>
+        </div>
+    </div>   
+    <div id= "results-container-macros" class="result-wrapper w-full mb-5">
+        <div class="result-box stack-item w-full">
+            <div class="flex align-middle">
+                <label class="heading-result">البروتين (غم)</label>
+            </div>
+            <div id="protein" class="result-label"></div>
+        </div>
+        <div class="result-box stack-item w-full">
+            <div class="flex align-middle">
+                <label class="heading-result">الكاربوھیدرات (غم)</label>
+            </div>
+            <div id="carb" class="result-label"></div>
+        </div>
+        <div class="result-box stack-item w-full">
+            <div class="flex align-middle">
+                <label class="heading-result">الدهون (غم)</label>
+            </div>
+            <div id="fat" class="result-label"></div>
+        </div>
+    </div>    
+    <div class="flex bg-sf_primary w-full justify-center gap-3">
+        <div class="wrapper2">
+            <div class="flex-col py-8">
+                <h2 class="text-4xl font-semibold text-start text-white mb-3">ملاحظة!</h2>
+                <p class="text-sm font-normal text-start text-white leading-loose">
+                    حاسبة السعرات الحراریة من سعودي فت مصممة لتقدیر احتیاجك الیومي من السعرات الحراریة التي تتوافق مع أھدافك الریاضیة الشخصیة، سواء كان ذلك (نزول الوزن) الدھون (أو زیادة الوزن) العضلات (أو الحفاظ على الوزن الحالي)
+                    خسارة الدھون وبناء العضلات. تستخدم الحاسبة المدخلات الخاصة بك لتحدید إجمالي السعرات المحروقة خلال الیوم والمعروفة بـ (TDEE) ثم یتم تعدیل النتیجة بناءً على ھدفك                    
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="flex bg-slate-50 w-full justify-center">
+        <div class="wrapper">
+            <div class="w-full">
+              <h2 class="text-2xl font-semibold text-vnet-blue mb-2 text-center">الأسئلة الشائعة</h2>
+              <h3 class="text-sm font-normal text-slate-400 mb-2 text-center">تصفح من خلال الاسئلة الشائعة</h2>
+              <ul class="flex flex-col">
+                <li class="faq-item" x-data="accordion(1)">
+                  <h2
+                    @click="handleClick()"
+                    class="fag-question"
+                  >
+                    <span>ما مدى دقة حاسبة السعرات من سعودي فت ؟</span>
+                    <svg
+                      :class="handleRotate()"
+                      class="faq-icon"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10"></path>
+                    </svg>
+                  </h2>
+                  <div
+                    x-ref="tab"
+                    :style="handleToggle()"
+                    class="overflow-hidden max-h-0 duration-500 transition-all"
+                  >
+                    <p class="faq-answer">
+                        تقدم الحاسبة تقدیراً لاحتیاجاتك من السعرات الحراریة المناسبة لھدفك بناءً على معادلة معدل الأیض وقت الراحة الجدیدة والتي تعتبر الأكثر دقة مقارنة بباقي المعادلات في .Eleni Pavlidou 2023ومع ذلك یمكن أن یختلف احتیاج كل فرد ومن الجید دائماً استشارة مقدم الرعایة الصحیة أو أخصائي التغذیة للحصول على خطة مخصصة لك                    </p>
+                  </div>
+                </li>
+                <li class="faq-item" x-data="accordion(2)">
+                    <h2
+                      @click="handleClick()"
+                      class="fag-question"
+                    >
+                      <span>ما ھو الھدف من حاسبة السعرات الحراریة في سعودي فت؟</span>
+                      <svg
+                        :class="handleRotate()"
+                        class="faq-icon"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10"></path>
+                      </svg>
+                    </h2>
+                    <div
+                      x-ref="tab"
+                      :style="handleToggle()"
+                      class="overflow-hidden max-h-0 duration-500 transition-all"
+                    >
+                      <p class="faq-answer">
+                        حاسبة السعرات الحراریة من سعودي فت مصممة لتقدیر احتیاجك الیومي من السعرات الحراریة التي تتوافق مع أھدافك الریاضیة الشخصیة، سواء كان ذلك (نزول الوزن) الدھون (أو زیادة الوزن) العضلات (أو الحفاظ على الوزن الحالي)
+                        خسارة الدھون وبناء العضلات. تستخدم الحاسبة المدخلات الخاصة بك لتحدید إجمالي السعرات المحروقة خلال الیوم والمعروفة بـ (TDEE) ثم یتم تعدیل النتیجة بناءً على ھدفك                    
+                    </p>
+                  </li>
+                  <li class="faq-item" x-data="accordion(3)">
+                    <h2
+                      @click="handleClick()"
+                      class="fag-question"
+                    >
+                      <span>كیف أستخدم حاسبة السعرات الحراریة ؟</span>
+                      <svg
+                        :class="handleRotate()"
+                        class="faq-icon"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10"></path>
+                      </svg>
+                    </h2>
+                    <div
+                      x-ref="tab"
+                      :style="handleToggle()"
+                      class="overflow-hidden max-h-0 duration-500 transition-all"
+                    >
+                      <p class="faq-answer">
+                        أدخل التفاصیل الشخصیة مثل الوزن، الطول.العمر.الجنس.الخطوات الیومیة. ونسبة الدھون في الجسم. ثم حدد ھدفك: نزول الوزن، زیادة الوزن، أو الحفاظ على الوزن. ستقدم الحاسبة لك تقدیرًا لكمیة السعرات الحراریة المناسبة لمساعدتك على تحقیق ھدفك بالإضافة إلى كمیة البروتین و الكاربوھیدرات و الدھون                      </p>
+                    </div>
+                  </li>
+                  <li class="faq-item" x-data="accordion(4)">
+                    <h2
+                      @click="handleClick()"
+                      class="fag-question"
+                    >
+                      <span>لا أعرف نسبة الدھون في جسمي. ماذا یجب علي أن أفعل؟</span>
+                      <svg
+                        :class="handleRotate()"
+                        class="faq-icon"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10"></path>
+                      </svg>
+                    </h2>
+                    <div
+                      x-ref="tab"
+                      :style="handleToggle()"
+                      class="overflow-hidden max-h-0 duration-500 transition-all"
+                    >
+                      <p class="faq-answer">
+                        إذا كنت غیر متأكد من نسبة الدھون في جسمك ھناك العدید من الطرق لقیاسھا مثل فحص انبودي Inbody Scan المتوفر في الأندیة الریاضیة وبعض الصیدلیات . یمكنك أیضًا تقدیرھا بناءً على الصور المتاحة على الإنترنت للذكور والإناث                      </p>
+                    </div>
+                  </li>
+                  <li class="faq-item" x-data="accordion(5)">
+                    <h2
+                      @click="handleClick()"
+                      class="fag-question"
+                    >
+                      <span>ماذا لو ثبت الوزن وتوقفت النتائج ؟</span>
+                      <svg
+                        :class="handleRotate()"
+                        class="faq-icon"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10"></path>
+                      </svg>
+                    </h2>
+                    <div
+                      x-ref="tab"
+                      :style="handleToggle()"
+                      class="overflow-hidden max-h-0 duration-500 transition-all"
+                    >
+                      <p class="faq-answer">
+                        إذا تغیر وزنك بشكل كبیر فمن الطبیعي أن احتیاجك من السعرات الحراریة أصبح أقل. نوصىي بإعادة استخدام الحاسبة مع وزنك الجدید لضمان أن السعرات الحراریة                      </p>
+                    </div>
+                  </li>
+                  <li class="faq-item" x-data="accordion(6)">
+                    <h2
+                      @click="handleClick()"
+                      class="fag-question"
+                    >
+                      <span>كیف یتم حساب احتیاجي من البروتین في حاسبة سعودي فت ؟</span>
+                      <svg
+                        :class="handleRotate()"
+                        class="faq-icon"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10"></path>
+                      </svg>
+                    </h2>
+                    <div
+                      x-ref="tab"
+                      :style="handleToggle()"
+                      class="overflow-hidden max-h-0 duration-500 transition-all"
+                    >
+                      <p class="faq-answer">
+                        یتم حساب احتیاجك من البروتین بناءً على كتلة الجسم الخالیة من الدھون والتي تم الحصول علیھا من وزنك الكلي ونسبة الدھون في الجسم. نستخدم معیار 2.2غرام من البروتین لكل كیلوغرام من كتلة الجسم الخالیة من الدھون لأنھا أدق طریقة نظراً لتأثیر كتلة الدھون على حساب احتیاج البروتین خصوصاً للأشخاص الذین یعانون من السمنة                      </p>
+                    </div>
+                  </li>
+                  <li class="faq-item" x-data="accordion(7)">
+                    <h2
+                      @click="handleClick()"
+                      class="fag-question"
+                    >
+                      <span>لماذا أحتاج إلى إدخال خطواتي الیومیة؟</span>
+                      <svg
+                        :class="handleRotate()"
+                        class="faq-icon"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10"></path>
+                      </svg>
+                    </h2>
+                    <div
+                      x-ref="tab"
+                      :style="handleToggle()"
+                      class="overflow-hidden max-h-0 duration-500 transition-all"
+                    >
+                      <p class="faq-answer">
+                        تستخدم الخطوات الیومیة لتقدیر مستوى نشاطك الیومي الذي یلعب دورًا كبیرًا في تحدید إجمالي السعرات المحروقة خلال الیوم (TDEE) و بالتالي معرفة ھدفك الیومي من السعرات الحراریة والعناصر الغذائیة.</p>
+                  </li>
+                  <li class="faq-item" x-data="accordion(8)">
+                    <h2
+                      @click="handleClick()"
+                      class="fag-question"
+                    >
+                      <span>كم مرة یجب علي تحدیث معلوماتي في حاسبة السعرات الحراریة ؟</span>
+                      <svg
+                        :class="handleRotate()"
+                        class="faq-icon"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10"></path>
+                      </svg>
+                    </h2>
+                    <div
+                      x-ref="tab"
+                      :style="handleToggle()"
+                      class="overflow-hidden max-h-0 duration-500 transition-all"
+                    >
+                      <p class="faq-answer">
+                        نوصي بتحدیث معلوماتك في الحاسبة كل 4-6 أسابیع أو عندما تواجه تغییرًا كبیرًا في الوزن.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="faq-item" x-data="accordion(9)">
+                    <h2
+                      @click="handleClick()"
+                      class="fag-question"
+                    >
+                      <span>ماذا إذا أردت الحفاظ على وزني؟ كیف تساعد الحاسبة في ذلك؟</span>
+                      <svg
+                        :class="handleRotate()"
+                        class="faq-icon"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10"></path>
+                      </svg>
+                    </h2>
+                    <div
+                      x-ref="tab"
+                      :style="handleToggle()"
+                      class="overflow-hidden max-h-0 duration-500 transition-all"
+                    >
+                      <p class="faq-answer">
+                        إذا كان ھدفك ھو الحفاظ على وزنك الحالي أو خسارة الدھون وبناء العضلات ) للمبتدئین في تمارین المقاومة( ستقدم الحاسبة لك تقدیرًا لكمیة السعرات الحراریة التي یجب أن تحافظ على وزنك الحالي بناءً على مدخلاتك
+                      </p>
+                    </div>
+                  </li>
+                  <li class="faq-item" x-data="accordion(10)">
+                    <h2
+                      @click="handleClick()"
+                      class="fag-question"
+                    >
+                      <span>ماذا نقصد بــ TDEE ؟</span>
+                      <svg
+                        :class="handleRotate()"
+                        class="faq-icon"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10"></path>
+                      </svg>
+                    </h2>
+                    <div
+                      x-ref="tab"
+                      :style="handleToggle()"
+                      class="overflow-hidden max-h-0 duration-500 transition-all"
+                    >
+                      <p class="faq-answer">
+                        تعرف TDEEأو Total Daily Energy Expenditureبأنھا إجمالي عدد السعرات الحراریة التي یحرقھا جسمك یومیًا لأداء وظائفھ الأساسیة وقت الراحة مع احتساب مستوى نشاطك البدني.
+                    </p>
+                    </div>
+                  </li>
+              </ul>
+            </div>
+          </div>
+    </div>
+    <script src="/src/scripts/calories-calculator.js"></script>
+</body>
+</html>
