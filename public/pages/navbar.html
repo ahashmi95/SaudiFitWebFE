@@ -1,0 +1,171 @@
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Saudi Fit | سعودي فت</title>
+    <link rel="stylesheet" href="/public/output.css">
+    <script src="/public/script.js"></script>
+</head>
+
+<body class="block sticky">
+    <div class="w-full mx-auto bg-slate-800 justify-between pl-6">
+        <div class="relative flex flex-col 2xl:max-w-7xl w-full px-2 py-1 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+            <div class="inline-flex justify-items-start items-center gap-1 text-xs text-white py-2 lg:py-0">
+                <span class="font-normal">البريد الإلكتروني:</span>
+                <span class="font-normal">info@saudi-fit.com</span>
+            </div>
+            <div class="inline-flex justify-items-end items-center gap-5">
+                <div x-data="{ dropdownOpen: false }" class="relative">
+                    <button @click="dropdownOpen=true" class="inline-flex items-center gap-2 justify-center py-2 text-sm transition-colors text-white">
+                        <!-- Image for logged in user -->
+                        <img id="user-image-area" class="object-cover w-8 h-8 rounded-full" src="https://cdn.devdojo.com/images/may2023/adam.jpeg" />
+                        <!-- placeholder image for guests -->
+                        <svg id="user-image-placeholder" class="w-auto h-5 hidden" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"></path>
+                          </svg>
+                        <span class="text-xs font-light flex flex-col items-start justify-center flex-shrink-0 h-full translate-y-px">
+                            <!-- Name for logged in user -->
+                            <span id="user-name-label">اشرف ماهر</span>
+                        </span>
+                    </button>
+                    <div x-show="dropdownOpen" 
+                        @click.away="dropdownOpen=false"
+                        x-transition:enter="ease-out duration-200"
+                        x-transition:enter-start="-translate-y-2"
+                        x-transition:enter-end="translate-y-0"
+                        class="absolute top-0 z-50 w-56 mt-12 -translate-x-0 right-0"
+                        x-cloak>
+                        <!-- Dropdown menu for guests -->
+                        <div class="p-1 mt-1 bg-white border rounded-md shadow-md border-neutral-200/70 text-neutral-700">
+                            <a href="#_" class="relative flex flex-col cursor-default select-none items-start rounded px-2 py-1 text-xs gap-1 outline-none transition-colors">
+                                <span class="font-medium text-xs text-slate-800 font">لديك حساب بالفعل ؟</span>
+                                <span class="text-[10px] text-slate-600">قم بتسجيل الدخول من هنا</span>
+                                <a
+                                class="flex justify-center text-center rounded border border-current px-8 py-3 m-2 text-xs font-medium text-slate-800 transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:text-green-500"
+                                href="#"
+                              >
+                                تسجيل الدخول
+                              </a>
+                            </a>
+                            <div class="h-px my-1 -mx-1 bg-neutral-200"></div>
+                            <a href="#_" class="relative flex flex-col cursor-default select-none items-start rounded px-2 py-1 text-xs gap-1 outline-none transition-colors">
+                                <span class="font-medium text-xs text-slate-800 font">ليس لديك حساب ؟</span>
+                                <span class="text-[10px] text-slate-600">قم بتسجيل حساب جديد من هنا</span>
+                                <a
+                                class="flex justify-center text-center rounded bg-green-600 px-8 py-3 m-2 text-xs font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-green-500"
+                                href="#"
+                              >
+                              حساب جديد
+                              </a>
+                            </a>
+                        </div>
+                        <!-- Dropdown menu for logged in users -->
+                        <div class="hidden p-1 mt-1 bg-white border rounded-md shadow-md border-neutral-200/70 text-neutral-700">
+                            <a href="#_" class="relative flex flex-col cursor-default select-none items-start rounded px-2 py-1 text-xs gap-1 outline-none transition-colors">
+                                <a
+                                class="flex justify-center text-center rounded bg-green-600 px-8 py-3 m-2 text-xs font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-green-500"
+                                href="#"
+                              >
+                              حسابي
+                              </a>
+                            </a>
+                            <div class="h-px my-1 -mx-1 bg-neutral-200"></div>
+                            <a href="#_" class="relative flex flex-col cursor-default select-none items-start rounded px-2 py-1 text-xs gap-1 outline-none transition-colors">
+                                <a
+                                class="flex justify-center text-center rounded border border-current px-8 py-3 m-2 text-xs font-medium text-slate-800 transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:text-green-500"
+                                href="#"
+                              >
+                              تسجيل الخروج
+                              </a>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="" id="cart-div" class="inline-flex justify-items-end items-center gap-1" >
+                    <div class="relative inline-flex text-color-white">
+                        <div class="w-3.5 h-3.5 p-0 bg-white absolute bottom-3 left-3 rounded-2xl border border-slate-800 justify-center items-center inline-flex">
+                            <div id="cart-count" class="text-center text-black text-[8px] font-bold">0</div>
+                          </div>
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"></path>
+                          </svg>
+                    </div>
+                    <span class="font-normal text-xs text-white">السلة</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="w-full mx-auto bg-white border-b border-gray-400 border-opacity-25">
+        <div x-data="{ open: false }" class="2xl:max-w-7xl relative flex flex-col w-full p-3 mx-auto bg-white md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+          <div class="flex flex-row items-center justify-between lg:justify-start">
+            <a href="#_" class="flex items-center w-auto md:py-0">
+                <img class="w-auto h-9" src="/assests/images/Logo.png"></img>
+            </a>
+            <!-- SEARCH BUTTON -->
+              <div id="mobile-search" :class="{'hidden': open, 'inline-flex': !open }" class="inline-flex items-center justify-center p-2 text-gray-400 hover:text-black focus:outline-none focus:text-black md:hidden">
+                <a href="#" class="justify-center items-center flex">
+                    <svg class="flex w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                      </svg>
+                </a>
+              </div>
+            <button @click="open = !open" class="inline-flex items-center justify-center p-2 text-gray-400 hover:text-black focus:outline-none focus:text-black md:hidden">
+              <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                <path :class="{'hidden': open, 'inline-flex': !open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                <path :class="{'hidden': !open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+
+          </div>
+          <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow  md:flex lg:py-0 md:justify-end md:flex-row hidden py-5 md:py-0">
+            <ul class="space-y-3 list-none md:space-y-0 md:items-center md:inline-flex">
+                <!-- Navigation items please use appropriate links -->
+              <li>
+                <a href="#" class="px-2 py-3 text-xs text-slate-900 lg:px-6  md:px-3 hover:text-green-600 active-nav">
+                  الرئيسية
+                </a>
+              </li>
+              <li>
+                <a href="#" class="px-2 py-3 text-xs text-slate-900 lg:px-6 md:px-3 hover:text-green-600 ">
+                  الدورات
+                </a>
+              </li>
+              <li>
+                <a href="#" class="px-2 py-3 text-xs text-slate-900 lg:px-6  md:px-3 hover:text-green-600">
+                  جداول التمرين
+                </a>
+              </li>
+              <li>
+                <a href="#" class="px-2 py-3 text-xs text-slate-900 lg:px-6  md:px-3 hover:text-green-600">
+                 حاسبة السعرات الحرارية
+                </a>
+              </li>
+              <li>
+                <a href="#" class="px-2 py-3 text-xs text-slate-900 lg:px-6  md:px-3 hover:text-green-600">
+                 المدونة
+                </a>
+              </li>
+              <li>
+                <a href="#" class="px-2 py-3 text-xs text-slate-900 lg:px-6  md:px-3 hover:text-green-600">
+                 المدربين
+                </a>
+              </li>
+              <li>
+                <a href="#" class="px-2 py-3 text-xs text-slate-900 lg:px-6  md:px-3 hover:text-green-600">
+                 اتصل بنا
+                </a>
+              </li>
+              <li>
+                <a href="#" class="justify-center items-center hidden md:flex">
+                    <svg class="flex w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                      </svg>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+    </div>            
+</body>
+</html>
