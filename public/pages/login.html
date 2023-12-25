@@ -1,0 +1,86 @@
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>تسجيل الدخول</title>
+    <link rel="stylesheet" href="/public/output.css">
+</head>
+<body>
+    <section class="w-full h-full bg-slate-100">
+        <div class="mx-auto max-w-7xl">
+            <div class="flex flex-col lg:flex-row">
+                <div class="w-full bg-slate-100 md:w-full lg:w-6/12 xl:w-8/12">
+                    <div class="flex flex-col items-start justify-start w-full h-full p-10 lg:p-16 xl:p-24">
+                        <h4 class="max-w-lg leading-relaxed text-5xl font-bold">قم بالدخول إلى
+                            حسابك</h4>
+                            <!-- Alert to show when there is an error or success -->
+                            <div id="alert" role="alert" class="hidden rounded-lg w-full bg-green-500 p-2">
+                                <div class="flex items-center gap-2">    
+                                  <img src="/assests/icons/success.svg" class="h-6 w-6" id="alert-icon"></img>                 
+                                  <div class="flex-1">
+                                    <strong id="alert-text" class="block font-light text-xs text-white">تم تسجيل الدخول بنجاح</strong>
+                                  </div>
+                                  <button id="dismiss-btn" class="">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      fill="none"
+                                      viewBox="0 0 24 24"
+                                      stroke-width="1.5"
+                                      stroke="white"
+                                      class="h-6 w-6"
+                                    >
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                  </button>
+                                </div>
+                            </div>
+                        <div class="relative w-full mt-6 space-y-6">
+                            <div class="relative">
+                                <label class="font-normal text-slate-800">البريد الإلكتروني</label>
+                                <input id="email" type="email" class="block w-full px-4 py-4 mt-3 text-xs placeholder-gray-400 bg-white rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50" data-primary="blue-600" data-rounded="rounded-lg" placeholder="example@mail.com" />
+                            </div>
+                            <div class="relative">
+                                <label class="font-normal text-slate-800">كلمة المرور</label>
+                                <input id="password" type="password" class="block w-full px-4 py-4 mt-3 text-xs placeholder-gray-400 bg-white rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50" data-primary="blue-600" data-rounded="rounded-lg" placeholder="*********" />
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="relative flex items-center space-x-2 text-slate-800">
+                                    <input id="remember" type="checkbox" class="p-2 border border-gray-300 rounded form-checkbox peer focus:border-gray-300 active:border-gray-300 checked:bg-green-500 checked:border-green-500" name="remember" />
+                                    <span class="block px-3 text-sm">تذكرني</span>
+                                </div>
+                                <a href="#_" class="ml-2 font-medium text-green-500 underline">هل فقدت كلمة المرور؟</a>
+                            </div>
+                            <div class="relative">
+                                <button onclick="handleLogin()" class="inline-block max-w-4xl px-5 py-4 text-base font-medium text-center text-white transition duration-200 bg-green-500 rounded-lg hover:bg-green-400 ease" data-primary="blue-600" data-rounded="rounded-lg">تسجيل الدخول</button>
+                                <span class="flex items-center pt-10 pb-6">
+                                    <span class="h-px flex-1 bg-gray-300"></span>
+                                    <span class="shrink-0 px-6 text-xs">أو</span>
+                                    <span class="h-px flex-1 bg-gray-300"></span>
+                                  </span>
+                                <a href="#_" class="flex items-center justify-center w-full px-5 py-4 mt-3 text-base font-medium text-center text-gray-900 transition duration-200 bg-white border border-slate-900 rounded-lg hover:bg-blue-50 ease" data-rounded="rounded-lg">
+                                    <img src="/assests/icons/Google.svg" class="w-5 h-5"></img>
+                                    <span class="block px-2 text-base">تسجيل الدخول عن طريق جوجل</span>
+                                </a>
+                            </div>
+                            <div class="flex items-center justify-center">
+                                <div class="relative flex items-center space-x-1 text-slate-800">
+                                    <span class="block px-2 text-base">ليس لديك حساب؟</span>
+                                    <a href="signup.html" class="font-medium text-green-500 underline">أنشئ حسابك</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative hidden w-full bg-cover lg:w-6/12 xl:w-7/12 lg:flex">
+                    <div class="relative flex flex-col w-full h-full px-4 my-20 lg:px-4 lg:my-0">
+                        <img class="w-auto max-h-full mt-20" src="/assests/images/login-image.png"></img>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>  
+    <script src="/src/scripts/alertModule.js" type="module"></script>
+    <script src="/src/scripts/auth.js" type="module"></script>  
+</body>
+</html>
