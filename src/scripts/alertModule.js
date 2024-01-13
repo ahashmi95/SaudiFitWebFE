@@ -40,4 +40,13 @@ const showAlert = (type, message) => {
     dismissBtn.addEventListener('click', handleDismiss);
 };
 
-export { AlertTypes, showAlert };
+const dismissAlertByCode = () => {
+    const alertDiv = document.getElementById('alert');
+    alertDiv.setAttribute('x-show', 'open');
+    setTimeout(() => {
+        alertDiv.classList.add('hidden');
+        alertDiv.setAttribute('x-data', '{ open: false }');
+    }, 300);
+};
+
+export { AlertTypes, showAlert, dismissAlertByCode };

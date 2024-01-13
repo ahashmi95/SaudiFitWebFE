@@ -59,3 +59,19 @@ window.handleNewPassword = function() {
     showAlert(AlertTypes.SUCCESS, 'Login failed. Please check your credentials.');
     // Add your actual login logic here
 };
+
+window.handleProfileSave = function() {
+    
+}
+
+window.profileCancel = function() {
+    
+}
+
+window.uploadImage = function() {
+
+}
+
+window.removeImage = function() {
+
+}

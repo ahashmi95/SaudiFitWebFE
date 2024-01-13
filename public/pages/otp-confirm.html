@@ -1,0 +1,70 @@
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>التحقق من البريد الإلكتروني</title>
+    <link rel="stylesheet" href="/public/output.css">
+</head>
+<body>
+    <section class="bg-slate-100 min-h-screen flex items-center justify-center">
+        <div class="flex flex-col mx-auto max-w-3xl px-10 items-center justify-center">
+                <div class="flex bg-cover justify-center items-center">
+                    <img class="w-64" src="/assests/images/otp.svg"></img>
+                </div>
+                    <div class="flex-col items-center justify-center py-5">
+                        <h4 class="flex justify-center w-96 mx-auto text-center leading-relaxed text-5xl font-bold pb-7">التحقق من البريد الإلكتروني</h4>
+                        <div class="flex flex-col text-sm space-y-1 text-center justify-center mt-3">
+                            <span>تم إرسال الرمز الى:</span>
+                            <span class="text-green-500 font-medium">achref****@gmail.com</span>
+                        </div>
+                            <!-- Alert to show when there is an error or success -->
+                            <div id="alert" role="alert" class="hidden rounded-lg w-full bg-green-500 p-2 mt-5">
+                                <div class="flex items-center gap-2">    
+                                  <img src="/assests/icons/success.svg" class="h-6 w-6" id="alert-icon"></img>                 
+                                  <div class="flex-1">
+                                    <strong id="alert-text" class="block font-light text-xs text-white">تم تسجيل الدخول بنجاح</strong>
+                                  </div>
+                                  <button id="dismiss-btn" class="">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      fill="none"
+                                      viewBox="0 0 24 24"
+                                      stroke-width="1.5"
+                                      stroke="white"
+                                      class="h-6 w-6"
+                                    >
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                  </button>
+                                </div>
+                            </div>
+                        <div class="flex-col justify-center items-center mt-6 space-y-6">
+                            <div class="flex justify-center">
+                                <div class="flex w-10/12 justify-evenly" dir="ltr">
+                                    <input maxlength="1" type="text" autofocus class="w-1/5 h-16 text-center rounded-md border-none bg-white text-sm focus:border-green-500 focus:outline-green-500"
+                                        placeholder="">
+                                    <input maxlength="1" type="text" class="w-1/5 h-16 text-center rounded-md border-none bg-white text-sm focus:border-green-500 focus:outline-green-500"
+                                        placeholder="" disabled>
+                                    <input maxlength="1" type="text" class="w-1/5 h-16 text-center rounded-md border-none bg-white text-sm focus:border-green-500 focus:outline-green-500"
+                                        placeholder="" disabled>
+                                    <input maxlength="1" type="text" class="w-1/5 h-16 text-center rounded-md border-none bg-white text-sm focus:border-green-500 focus:outline-green-500"
+                                        placeholder="" disabled>
+                                </div>
+                            </div>
+                            <div class="text-sm space-y-1 text-center justify-center mt-3">
+                                <span id="resend-otp-title">اعادة ارسال الكود خلال</span>
+                                <button id="resend-otp" onclick="resendOTP()" class="text-green-500 font-medium" disabled>
+                                    <span id="counter">30 ثانية</span>
+                                </button>
+                            </div>
+                            <div class="flex justify-center">
+                                <button id="verify-button" onclick="handleOTP()" class="w-10/12 items-center px-5 py-4 text-base font-medium text-center text-white transition duration-200 bg-green-500 rounded-lg hover:bg-green-400 ease" data-primary="blue-600" data-rounded="rounded-lg" disabled>تعيين</button>
+                            </div>
+                    </div>
+                </div>
+        </div>
+    </section>  
+    <script src="/src/scripts/otp.js" type="module"></script>
+</body>
+</html>
