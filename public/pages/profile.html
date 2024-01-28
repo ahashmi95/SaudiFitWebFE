@@ -1,139 +1,153 @@
 <html lang="ar" dir="rtl">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>الملف الشخصي</title>
-    <link rel="stylesheet" href="/public/output.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>الملف الشخصي</title>
+  <link rel="stylesheet" href="/public/output.css">
 </head>
+
 <body class="bg-white h-full">
-    <div class="flex flex-wrap w-full bg-[#F4F7FD] py-20 text-5xl font-semibold items-center justify-center">
-        <h2>الملف الشخصي</h2>
-    </div>
-    <section class="w-full bg-white">
-        <div class="mx-auto max-w-7xl">
-                                                    <!-- Alert to show when there is an error or success -->
-                                                    <div id="alert" role="alert" class=" rounded-lg  bg-green-500 p-2 mt-5 mx-5">
-                                                        <div class="flex items-center gap-2">    
-                                                          <img src="/assests/icons/success.svg" class="h-6 w-6" id="alert-icon"></img>                 
-                                                          <div class="flex-1">
-                                                            <strong id="alert-text" class="block font-light text-xs text-white">تم تسجيل الدخول بنجاح</strong>
-                                                          </div>
-                                                          <button id="dismiss-btn" class="">
-                                                            <svg
-                                                              xmlns="http://www.w3.org/2000/svg"
-                                                              fill="none"
-                                                              viewBox="0 0 24 24"
-                                                              stroke-width="1.5"
-                                                              stroke="white"
-                                                              class="h-6 w-6"
-                                                            >
-                                                              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                                            </svg>
-                                                          </button>
-                                                        </div>
-                                                    </div>
-            <div class="flex flex-col lg:flex-row">
-                <div class="w-full md:w-full lg:w-6/12 xl:w-6/12">
-                    <div class="flex flex-col items-start justify-start w-full h-full p-10 lg:p-16 xl:p-24">
-                            <div class="flex flex-row gap-3 items-center">
-                                <img id="user-image-area" class="object-cover w-20 h-20 rounded-full" src="https://cdn.devdojo.com/images/may2023/adam.jpeg" />
-                                <!-- placeholder image for guests -->
-                                <svg id="user-image-placeholder" class="w-auto h-5 hidden" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"></path>
-                                </svg>
-                                <!-- من الممكن حذف الصورة وفي حالة الحذف نستخدم 
+  <div class="flex flex-wrap w-full bg-[#F4F7FD] py-20 text-5xl font-semibold items-center justify-center">
+    <h2>الملف الشخصي</h2>
+  </div>
+  <section class="w-full bg-white">
+    <div class="mx-auto max-w-7xl">
+      <!-- Alert to show when there is an error or success -->
+      <div id="alert" role="alert" class=" rounded-lg  bg-green-500 p-2 mt-5 mx-5">
+        <div class="flex items-center gap-2">
+          <img src="/assests/icons/success.svg" class="h-6 w-6" id="alert-icon"></img>
+          <div class="flex-1">
+            <strong id="alert-text" class="block font-light text-xs text-white">تم تسجيل الدخول بنجاح</strong>
+          </div>
+          <button id="dismiss-btn" class="">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white"
+              class="h-6 w-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="flex flex-col lg:flex-row">
+        <div class="w-full md:w-full lg:w-6/12 xl:w-6/12">
+          <div class="flex flex-col items-start justify-start w-full h-full p-10 lg:p-16 xl:p-24">
+            <div class="flex flex-row gap-3 items-center">
+              <img id="user-image-area" class="object-cover w-20 h-20 rounded-full"
+                src="https://cdn.devdojo.com/images/may2023/adam.jpeg" />
+              <!-- placeholder image for guests -->
+              <svg id="user-image-placeholder" class="w-auto h-5 hidden" fill="none" stroke="currentColor"
+                stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z">
+                </path>
+              </svg>
+              <!-- من الممكن حذف الصورة وفي حالة الحذف نستخدم 
                                 Camera icon 
                                 مكان صورة المستخدم -->
-                                <button onclick="uploadImage()" class="inline-block max-w-4xl px-5 py-3 text-xs font-medium text-center text-slate-800 transition duration-200 bg-white rounded-lg border border-slate-900 ease" data-primary="blue-600" data-rounded="rounded-lg">إضافة صورة</button>
-                                <button onclick="removeImage()" class="inline-block max-w-4xl px-5 py-3 text-xs font-medium text-center text-white transition duration-200 bg-red-500 rounded-lg ease" data-primary="blue-600" data-rounded="rounded-lg">حذف</button>
+              <button onclick="uploadImage()"
+                class="inline-block max-w-4xl px-5 py-3 text-xs font-medium text-center text-slate-800 transition duration-200 bg-white rounded-lg border border-slate-900 ease"
+                data-primary="blue-600" data-rounded="rounded-lg">إضافة صورة</button>
+              <button onclick="removeImage()"
+                class="inline-block max-w-4xl px-5 py-3 text-xs font-medium text-center text-white transition duration-200 bg-red-500 rounded-lg ease"
+                data-primary="blue-600" data-rounded="rounded-lg">حذف</button>
 
-                            </div>
-                        <div class="relative w-full mt-6 space-y-6">
-                            <div class="relative">
-                                <label class="font-normal text-xs text-slate-800">الإسم الكامل</label>
-                                <input id="name" type="name" class="block w-full px-4 py-4 mt-3 text-xs placeholder-gray-400 bg-sf_bg_LightGray rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50" data-primary="blue-600" data-rounded="rounded-lg" placeholder="اسمك الكريم" />
-                            </div>
-                            <div class="relative">
-                                <label class="font-normal text-xs text-slate-800">البريد الإلكتروني</label>
-                                <input id="email" type="email" class="block w-full px-4 py-4 mt-3 text-xs placeholder-gray-400 bg-sf_bg_LightGray rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50" data-primary="blue-600" data-rounded="rounded-lg" placeholder="example@mail.com" />
-                            </div>
-                            <div class="relative">
-                                <label class="font-normal text-xs text-slate-800">العمر</label>
-                                <input id="age" type="number" class="block w-full px-4 py-4 mt-3 text-xs placeholder-gray-400 bg-sf_bg_LightGray rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50" data-primary="blue-600" data-rounded="rounded-lg" placeholder="20" />
-                            </div>
-                            <div class="relative">
-                                <label class="font-normal text-xs text-slate-800">رقم الهاتف</label>
-                                <input id="phone" type="phone" class="block w-full px-4 py-4 mt-3 text-xs placeholder-gray-400 bg-sf_bg_LightGray rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50" data-primary="blue-600" data-rounded="rounded-lg" placeholder="0096656xxxxxxxx" />
-                            </div>
-                            <div class="relative">
-                                <label class="font-normal text-xs text-slate-800">الجنس</label>
-                                <fieldset class="flex flex-wrap gap-3 py-4">
-                                    <legend class="sr-only">gender</legend>
-
-                                    <div>
-                                      <input
-                                        type="radio"
-                                        name="gender"
-                                        value="male"
-                                        id="male"
-                                        class="peer hidden"
-                                        checked
-                                      />
-                                  
-                                      <label
-                                        for="male"
-                                        class="flex cursor-pointer items-center justify-center rounded-md border border-gray-100 bg-sf_bg_LightGray px-3 py-2 text-gray-900 hover:border-gray-200 peer-checked:border-sf_primary_dark peer-checked:bg-green-100 peer-checked:text-sf_primary_darker"
-                                      >
-                                        <p class="text-sm font-medium">ذكر</p>
-                                      </label>
-                                    </div>
-                                  
-                                    <div>
-                                      <input type="radio" name="gender" value="female" id="female" class="peer hidden" />
-                                  
-                                      <label
-                                        for="female"
-                                        class="flex cursor-pointer items-center justify-center rounded-md border border-gray-100 bg-sf_bg_LightGray px-3 py-2 text-gray-900 hover:border-gray-200 peer-checked:border-sf_primary_dark peer-checked:bg-green-100 peer-checked:text-sf_primary_darker"
-                                      >
-                                        <p class="text-sm font-medium">انثى</p>
-                                      </label>
-                                    </div>
-                                  </fieldset>
-                            </div>
-                            <div class="flex gap-3">
-                                <button onclick="handleProfileSave()" class="inline-block max-w-4xl px-5 py-4 text-xs font-medium text-center text-white transition duration-200 bg-green-500 rounded-lg hover:bg-green-400 ease" data-primary="blue-600" data-rounded="rounded-lg">حفظ</button>
-                                <button onclick="profileCancel()" class="inline-block max-w-4xl px-5 py-4 text-xs font-medium text-center text-slate-900 transition duration-200 bg-slate-200 rounded-lg ease" data-primary="blue-600" data-rounded="rounded-lg">الغاء</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full md:w-full lg:w-6/12 xl:w-6/12">
-                    <div class="flex flex-col items-start justify-start w-full h-full p-10 lg:p-16 xl:p-24">
-                        <div class="relative w-full mt-6 space-y-6">
-                            <div class="relative">
-                                <label class="font-normal text-xs text-slate-800">كلمة المرور الحالية</label>
-                                <input id="current-password" type="password" class="block w-full px-4 py-4 mt-3 text-xs placeholder-gray-400 bg-sf_bg_LightGray rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50" data-primary="blue-600" data-rounded="rounded-lg" placeholder="********" />
-                            </div>
-                            <div class="relative">
-                                <label class="font-normal text-xs text-slate-800">كلمة المرور الجديدة</label>
-                                <input id="password" type="password" class="block w-full px-4 py-4 mt-3 text-xs placeholder-gray-400 bg-sf_bg_LightGray rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50" data-primary="blue-600" data-rounded="rounded-lg" placeholder="********" />
-                            </div>
-                            <div class="relative">
-                                <label class="font-normal text-xs text-slate-800">تأكيد كلمة المرور الجديدة</label>
-                                <input id="password-confirm" type="password" class="block w-full px-4 py-4 mt-3 text-xs placeholder-gray-400 bg-sf_bg_LightGray rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50" data-primary="blue-600" data-rounded="rounded-lg" placeholder="********" />
-                            </div>
-                            <div class="relative">
-                                <button onclick="handleNewPassword()" class="inline-block max-w-4xl px-5 py-4 text-xs font-medium text-center text-white transition duration-200 bg-green-500 rounded-lg hover:bg-green-400 ease" data-primary="blue-5" data-rounded="rounded-lg">تغيير كلمة المرور</button>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
             </div>
+            <div class="relative w-full mt-6 space-y-6">
+              <div class="relative">
+                <label class="font-normal text-xs text-slate-800">الإسم الكامل</label>
+                <input id="name" type="name"
+                  class="block w-full px-4 py-4 mt-3 text-xs placeholder-gray-400 bg-sf_bg_LightGray rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50"
+                  data-primary="blue-600" data-rounded="rounded-lg" placeholder="اسمك الكريم" />
+              </div>
+              <div class="relative">
+                <label class="font-normal text-xs text-slate-800">البريد الإلكتروني</label>
+                <input id="email" type="email"
+                  class="block w-full px-4 py-4 mt-3 text-xs placeholder-gray-400 bg-sf_bg_LightGray rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50"
+                  data-primary="blue-600" data-rounded="rounded-lg" placeholder="example@mail.com" />
+              </div>
+              <div class="relative">
+                <label class="font-normal text-xs text-slate-800">العمر</label>
+                <input id="age" type="number"
+                  class="block w-full px-4 py-4 mt-3 text-xs placeholder-gray-400 bg-sf_bg_LightGray rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50"
+                  data-primary="blue-600" data-rounded="rounded-lg" placeholder="20" />
+              </div>
+              <div class="relative">
+                <label class="font-normal text-xs text-slate-800">رقم الهاتف</label>
+                <input id="phone" type="phone"
+                  class="block w-full px-4 py-4 mt-3 text-xs placeholder-gray-400 bg-sf_bg_LightGray rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50"
+                  data-primary="blue-600" data-rounded="rounded-lg" placeholder="0096656xxxxxxxx" />
+              </div>
+              <div class="relative">
+                <label class="font-normal text-xs text-slate-800">الجنس</label>
+                <fieldset class="flex flex-wrap gap-3 py-4">
+                  <legend class="sr-only">gender</legend>
+
+                  <div>
+                    <input type="radio" name="gender" value="male" id="male" class="peer hidden" checked />
+
+                    <label for="male"
+                      class="flex cursor-pointer items-center justify-center rounded-md border border-gray-100 bg-sf_bg_LightGray px-3 py-2 text-gray-900 hover:border-gray-200 peer-checked:border-sf_primary_dark peer-checked:bg-green-100 peer-checked:text-sf_primary_darker">
+                      <p class="text-sm font-medium">ذكر</p>
+                    </label>
+                  </div>
+
+                  <div>
+                    <input type="radio" name="gender" value="female" id="female" class="peer hidden" />
+
+                    <label for="female"
+                      class="flex cursor-pointer items-center justify-center rounded-md border border-gray-100 bg-sf_bg_LightGray px-3 py-2 text-gray-900 hover:border-gray-200 peer-checked:border-sf_primary_dark peer-checked:bg-green-100 peer-checked:text-sf_primary_darker">
+                      <p class="text-sm font-medium">انثى</p>
+                    </label>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="flex gap-3">
+                <button onclick="handleProfileSave()"
+                  class="inline-block max-w-4xl px-5 py-4 text-xs font-medium text-center text-white transition duration-200 bg-green-500 rounded-lg hover:bg-green-400 ease"
+                  data-primary="blue-600" data-rounded="rounded-lg">حفظ</button>
+                <button onclick="profileCancel()"
+                  class="inline-block max-w-4xl px-5 py-4 text-xs font-medium text-center text-slate-900 transition duration-200 bg-slate-200 rounded-lg ease"
+                  data-primary="blue-600" data-rounded="rounded-lg">الغاء</button>
+              </div>
+            </div>
+          </div>
         </div>
-    </section>  
-    <script src="/src/scripts/alertModule.js" type="module"></script>
-    <script src="/src/scripts/auth.js" type="module"></script>  
+        <div class="w-full md:w-full lg:w-6/12 xl:w-6/12">
+          <div class="flex flex-col items-start justify-start w-full h-full p-10 lg:p-16 xl:p-24">
+            <div class="relative w-full mt-6 space-y-6">
+              <div class="relative">
+                <label class="font-normal text-xs text-slate-800">كلمة المرور الحالية</label>
+                <input id="current-password" type="password"
+                  class="block w-full px-4 py-4 mt-3 text-xs placeholder-gray-400 bg-sf_bg_LightGray rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50"
+                  data-primary="blue-600" data-rounded="rounded-lg" placeholder="********" />
+              </div>
+              <div class="relative">
+                <label class="font-normal text-xs text-slate-800">كلمة المرور الجديدة</label>
+                <input id="password" type="password"
+                  class="block w-full px-4 py-4 mt-3 text-xs placeholder-gray-400 bg-sf_bg_LightGray rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50"
+                  data-primary="blue-600" data-rounded="rounded-lg" placeholder="********" />
+              </div>
+              <div class="relative">
+                <label class="font-normal text-xs text-slate-800">تأكيد كلمة المرور الجديدة</label>
+                <input id="password-confirm" type="password"
+                  class="block w-full px-4 py-4 mt-3 text-xs placeholder-gray-400 bg-sf_bg_LightGray rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50"
+                  data-primary="blue-600" data-rounded="rounded-lg" placeholder="********" />
+              </div>
+              <div class="relative">
+                <button onclick="handleNewPassword()"
+                  class="inline-block max-w-4xl px-5 py-4 text-xs font-medium text-center text-white transition duration-200 bg-green-500 rounded-lg hover:bg-green-400 ease"
+                  data-primary="blue-5" data-rounded="rounded-lg">تغيير كلمة المرور</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="/src/scripts/alertModule.js" type="module"></script>
+  <script src="/src/scripts/auth.js" type="module"></script>
 </body>
+
 </html>

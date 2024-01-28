@@ -21,7 +21,7 @@ window.handleLogin = function() {
     const passwordConfirm = document.getElementById('password-confirm').value;
     const agree = document.getElementById('agree').checked;
 
-    console.log('Email:', email);
+    console.log('Email:', email); 
     console.log('Password:', password);
     console.log('Remember:', remember);
 
